@@ -64735,4 +64735,5 @@ let getNomeAleatorio = function (){
     }
 
     console.log(nomeSelecionado + " " + primeiroSobrenomeSelecionado + " " + segundoSobrenomeSelecionado);
+    return(nomeSelecionado + " " + primeiroSobrenomeSelecionado + " " + segundoSobrenomeSelecionado);
 }
