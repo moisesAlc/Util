@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Gerador de Nomes Aleatórios</title>
+
+    <style>
+      body{
+        background-color: #4D8FAC;
+        height: 100%vh;
+      }
+      div{
+        padding-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        margin: auto;
+      }
+      #divisao{
+        display: flex;
+        flex-direction: row;
+      }
+      input{
+        margin: 8px;
+      }
+      textarea{
+        margin: 8px;
+        text-align: center;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: 500;
+        height: 40% !important;
+      }
+      .alert-info{
+        background-color: #22A7F0 !important;
+      }
+      #btn-zerar{
+        margin-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+      <div>
+        <label class="alert alert-info " for="numero_de_nomes">Informe abaixo a quantidade de nome(s) aleatório(s) desejado(s) e aperte <strong><em>Enter</em></strong>:</label>
+        <div id="divisao">
+          <input class="form-control" id="numero_de_nomes" type="number" min="1" onchange="gerar()">
+          <button id="btn-copiar" class="btn" onclick="copiar()">Copiar</button>
+          <button id="btn-zerar" class="btn" onclick="zerar()">Zerar</button>
+        </div>
+        
+        <!-- <input class="btn btn-dark" type="submit" onclick="gerar()"> -->
+        <textarea class="form-control" id="area_nomes" rows="20" cols="40"></textarea>
+      </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="trazNomeAleatorio.js"></script>
+
+    <script>
+      let area_nomes = document.getElementById("area_nomes");
+      //let texto = area_nomes.value;
+      let numero_de_nomes = document.getElementById("numero_de_nomes");
+
+      let gerar = function(){
+        texto = "";
+        for (i=1; i<=numero_de_nomes.value; i++){
+          texto = texto.concat(getNomeAleatorio());
+          texto = texto.concat("\n");
+          
+        }
+        document.getElementById("area_nomes").value = texto;
+      }
+
+      let copiar = function () {
+
+        area_nomes.select();
+        area_nomes.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+
+      }
+
+      let zerar = function () {
+
+        area_nomes.value = "";
+        texto = "";
+        numero_de_nomes.value = "";
+      }
+    </script>
+  </body>
+</html>
